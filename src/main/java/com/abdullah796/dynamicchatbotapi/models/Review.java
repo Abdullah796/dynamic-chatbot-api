@@ -17,12 +17,12 @@ public class Review {
     private Date updatedDate = new Date();
     private String text;
 
-    @JsonIgnoreProperties({"reviewList"})
+    @JsonIgnoreProperties(value = {"reviewList", "chatbotList", "chatList"}, allowSetters = true)
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @JsonIgnoreProperties({"reviewList"})
+    @JsonIgnoreProperties(value = {"reviewList", "chatList", "createdBy"}, allowSetters = true)
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "chatbot_id")
     private Chatbot chatbot;

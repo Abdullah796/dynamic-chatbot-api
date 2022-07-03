@@ -26,15 +26,15 @@ public class User {
     private Date updatedDate = new Date();
     private String role = Role.USER.toString();
 
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties(value = {"user"}, allowSetters = true)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Chat> chatList;
 
-    @JsonIgnoreProperties({"createdBy"})
+    @JsonIgnoreProperties(value = {"createdBy", "reviewList", "chatList"}, allowSetters = true)
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL)
     private List<Chatbot> chatbotList = new ArrayList<>();
 
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties(value = {"user"}, allowSetters = true)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
 }

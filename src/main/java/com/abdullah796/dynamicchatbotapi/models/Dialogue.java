@@ -18,7 +18,7 @@ public class Dialogue {
     private Date createdDate = new Date();
     private String text;
 
-    @JsonIgnoreProperties({"dialogueList"})
+    @JsonIgnoreProperties(value = {"dialogueList"}, allowSetters = true)
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "chat_id")
     private Chat chat;

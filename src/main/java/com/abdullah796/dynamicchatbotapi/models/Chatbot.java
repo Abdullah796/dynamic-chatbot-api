@@ -20,16 +20,16 @@ public class Chatbot {
     private Date createdDate = new Date();
     private Date updatedDate = new Date();
 
-    @JsonIgnoreProperties({"chatbotList"})
+    @JsonIgnoreProperties(value = {"chatbotList", "reviewList", "chatList"}, allowSetters = true)
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "user_id")
     private User createdBy;
 
-    @JsonIgnoreProperties({"chatbot"})
+    @JsonIgnoreProperties(value = {"chatbot", "user", "chatbot"}, allowSetters = true)
     @OneToMany(mappedBy = "chatbot", cascade = CascadeType.ALL)
     private List<Chat> chatList = new ArrayList<>();
 
-    @JsonIgnoreProperties({"chatbot"})
+    @JsonIgnoreProperties(value = {"chatbot", "user", "chatbot"}, allowSetters = true)
     @OneToMany(mappedBy = "chatbot", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
 }
